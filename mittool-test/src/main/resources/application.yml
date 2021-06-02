@@ -1,0 +1,6 @@
+mit:
+  forest-config:
+    log-enabled: true
+    log-response-content: true
+
+

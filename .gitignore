@@ -1,0 +1,4 @@
+# Project exclude paths
+/mittool-core/target/
+/mittool-spring-boot-autoconfigure/target/
+/mittool-spring-boot-starter/target/
