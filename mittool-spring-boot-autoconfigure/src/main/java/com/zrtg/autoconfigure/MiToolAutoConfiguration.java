@@ -2,7 +2,7 @@ package com.zrtg.autoconfigure;
 
 import com.dtflys.forest.config.ForestConfiguration;
 import com.dtflys.forest.ssl.SSLUtils;
-import com.zrtg.autoconfigure.properties.CodeGeneratorProperties;
+import com.zrtg.autoconfigure.properties.MybatisPlusCodeGenerateProperties;
 import com.zrtg.autoconfigure.properties.MitToolConfigurationProperties;
 import com.zrtg.mittool.generator.MyBatisPlusGenerator;
 import com.zrtg.mittoolcore.service.MitService;
@@ -16,8 +16,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@EnableConfigurationProperties({MitToolConfigurationProperties.class,
-        CodeGeneratorProperties.class})
+@EnableConfigurationProperties({MitToolConfigurationProperties.class})
 public class MiToolAutoConfiguration {
 
     @Bean
@@ -54,13 +53,13 @@ public class MiToolAutoConfiguration {
 
     @Bean
     @ConditionalOnProperty(prefix = "mit.code", value = "enable", matchIfMissing = false)
-    public MyBatisPlusGenerator myBatisPlusGenerator(CodeGeneratorProperties cgp) {
+    public MyBatisPlusGenerator myBatisPlusGenerator(MitToolConfigurationProperties mitToolConfigurationProperties) {
         return new MyBatisPlusGenerator(
-                cgp.getPackageBase(),
-                cgp.getDatasource().getUrl(),
-                cgp.getDatasource().getDriverName(),
-                cgp.getDatasource().getUsername(),
-                cgp.getDatasource().getPassword());
+                mitToolConfigurationProperties.getCode().getPackageBase(),
+                mitToolConfigurationProperties.getCode().getDatasource().getUrl(),
+                mitToolConfigurationProperties.getCode().getDatasource().getDriverName(),
+                mitToolConfigurationProperties.getCode().getDatasource().getUsername(),
+                mitToolConfigurationProperties.getCode().getDatasource().getPassword());
     }
 
 }

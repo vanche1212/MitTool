@@ -13,7 +13,11 @@ public class MitToolConfigurationProperties {
     /**
      * Forest配置
      */
-    private MitToolForestConfigurationProperties forestConfig = new MitToolForestConfigurationProperties();
+    private MitToolForestConfigurationProperties forestConfig;
 
+    /**
+     * 代码自动生成配置
+     */
+    private MybatisPlusCodeGenerateProperties code;
 
 }

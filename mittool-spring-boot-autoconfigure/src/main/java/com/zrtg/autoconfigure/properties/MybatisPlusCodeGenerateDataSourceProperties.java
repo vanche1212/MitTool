@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @ConfigurationProperties(prefix = "mit.code.datasource")
-public class DataSourceProperties {
+public class MybatisPlusCodeGenerateDataSourceProperties {
     /**
      * 数据库URL
      */

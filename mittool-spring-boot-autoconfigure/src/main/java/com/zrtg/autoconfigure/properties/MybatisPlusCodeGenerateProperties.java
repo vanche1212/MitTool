@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @ConfigurationProperties(prefix = "mit.code")
-public class CodeGeneratorProperties {
+public class MybatisPlusCodeGenerateProperties {
 
     /**
      * 是否启用
@@ -19,7 +19,7 @@ public class CodeGeneratorProperties {
     /**
      * 数据源
      */
-    private DataSourceProperties datasource;
+    private MybatisPlusCodeGenerateDataSourceProperties datasource;
 
     /**
      * 代码生成路径（项目基础路径）
