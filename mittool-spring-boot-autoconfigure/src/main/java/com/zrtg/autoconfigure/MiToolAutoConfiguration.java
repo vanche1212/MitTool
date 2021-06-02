@@ -2,18 +2,22 @@ package com.zrtg.autoconfigure;
 
 import com.dtflys.forest.config.ForestConfiguration;
 import com.dtflys.forest.ssl.SSLUtils;
+import com.zrtg.autoconfigure.properties.CodeGeneratorProperties;
 import com.zrtg.autoconfigure.properties.MitToolConfigurationProperties;
-import com.zrtg.mittoolcore.service.SobeySolarService;
-import com.zrtg.mittoolcore.service.impl.SobeySolarServiceImpl;
+import com.zrtg.mittool.generator.MyBatisPlusGenerator;
+import com.zrtg.mittoolcore.service.MitService;
+import com.zrtg.mittoolcore.service.impl.MitServiceImpl;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@EnableConfigurationProperties({MitToolConfigurationProperties.class})
+@EnableConfigurationProperties({MitToolConfigurationProperties.class,
+        CodeGeneratorProperties.class})
 public class MiToolAutoConfiguration {
 
     @Bean
@@ -44,8 +48,19 @@ public class MiToolAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SobeySolarService sobeySolarService(ForestConfiguration forestConfiguration) {
-        return new SobeySolarServiceImpl(forestConfiguration);
+    public MitService sobeySolarService(ForestConfiguration forestConfiguration) {
+        return new MitServiceImpl(forestConfiguration);
+    }
+
+    @Bean
+    @ConditionalOnProperty(prefix = "mit.code", value = "enable", matchIfMissing = false)
+    public MyBatisPlusGenerator myBatisPlusGenerator(CodeGeneratorProperties cgp) {
+        return new MyBatisPlusGenerator(
+                cgp.getPackageBase(),
+                cgp.getDatasource().getUrl(),
+                cgp.getDatasource().getDriverName(),
+                cgp.getDatasource().getUsername(),
+                cgp.getDatasource().getPassword());
     }
 
 }

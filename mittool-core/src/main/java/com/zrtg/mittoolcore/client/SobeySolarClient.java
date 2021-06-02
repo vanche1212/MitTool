@@ -11,8 +11,6 @@ import java.util.List;
 )
 public interface SobeySolarClient {
 
-
-
     /**
      * 获取索贝租户栏目
      */
