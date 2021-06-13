@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="mittool-core" />
+        <module name="mittool-spring-boot-starter" />
         <module name="mittool-test" />
         <module name="mittool-mpbg" />
         <module name="mittool-spring-boot-autoconfigure" />
-        <module name="mittool-spring-boot-starter" />
-        <module name="mittool-core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />

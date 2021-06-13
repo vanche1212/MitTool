@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.io.Serializable;
 
+@Deprecated
 public class CommonResponse<T> extends ResponseEntity<Message<T>> implements Serializable {
 
     private static final long serialVersionUID = 1823611267210679876L;

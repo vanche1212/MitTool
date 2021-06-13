@@ -1,14 +1,20 @@
-mit:
-  forest-config:
-    log-enabled: true
-    log-response-content: true
-  code:
-    enable: true
-    datasource:
-      url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-      driver-name: com.mysql.cj.jdbc.Driver
-      username: root
-      password: root
-    package-base: com.zrtg.demo
-    project-name: mittool-test
+#mit:
+#  forest-config:
+#    log-enabled: false
+#    log-response-content: true
+#  code:
+#    enable: true
+#    datasource:
+#      url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+#      driver-name: com.mysql.cj.jdbc.Driver
+#      username: root
+#      password: root
+#    package-base: com.zrtg.demo
+#    project-name: mittool-test
+#
 
+#mit:
+#  weblog:
+#    request: true
+#    response: true
+#    enable: true

@@ -9,15 +9,19 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "mit")
 public class MitToolConfigurationProperties {
 
+    /**
+     * 请求日志配置
+     */
+    private WebLogProperties weblog = new WebLogProperties();
 
     /**
-     * Forest配置
+     * RPC配置
      */
-    private MitToolForestConfigurationProperties forestConfig;
+    private MitToolForestConfigurationProperties forestConfig = new MitToolForestConfigurationProperties();
 
     /**
      * 代码自动生成配置
      */
-    private MybatisPlusCodeGenerateProperties code;
+    private MybatisPlusCodeGenerateProperties code = new MybatisPlusCodeGenerateProperties();
 
 }

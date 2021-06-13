@@ -2,9 +2,11 @@ package com.zrtg.autoconfigure;
 
 import com.dtflys.forest.config.ForestConfiguration;
 import com.dtflys.forest.ssl.SSLUtils;
-import com.zrtg.autoconfigure.properties.MybatisPlusCodeGenerateProperties;
 import com.zrtg.autoconfigure.properties.MitToolConfigurationProperties;
+import com.zrtg.autoconfigure.properties.WebLogProperties;
 import com.zrtg.mittool.generator.MyBatisPlusGenerator;
+import com.zrtg.mittoolcore.interceptor.ForestResultHandler;
+import com.zrtg.mittoolcore.log.WebLogAspect;
 import com.zrtg.mittoolcore.service.MitService;
 import com.zrtg.mittoolcore.service.impl.MitServiceImpl;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -13,6 +15,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 
 
 @Configuration
@@ -27,6 +30,8 @@ public class MiToolAutoConfiguration {
         configuration.setBackendName(mitToolConfigurationProperties.getForestConfig().getClient());
         // 连接池最大连接数，默认值为500
         configuration.setMaxConnections(123);
+        // 设置拦截器
+//        configuration.setInterceptors(Collections.singletonList(ErrorInterceptor.class));
         // 每个路由的最大连接数，默认值为500
         configuration.setMaxRouteConnections(222);
         // 请求超时时间，单位为毫秒, 默认值为3000
@@ -47,8 +52,14 @@ public class MiToolAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public MitService sobeySolarService(ForestConfiguration forestConfiguration) {
+    public MitService mitService(ForestConfiguration forestConfiguration) {
         return new MitServiceImpl(forestConfiguration);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ForestResultHandler forestResultHandler() {
+        return new ForestResultHandler();
     }
 
     @Bean
@@ -61,5 +72,17 @@ public class MiToolAutoConfiguration {
                 mitToolConfigurationProperties.getCode().getDatasource().getUsername(),
                 mitToolConfigurationProperties.getCode().getDatasource().getPassword());
     }
+
+
+    @Bean
+    @ConditionalOnProperty(prefix = "mit.weblog", value = "enable", matchIfMissing = true)
+    public WebLogAspect webLogAspect(MitToolConfigurationProperties mitToolConfigurationProperties) {
+        WebLogAspect webLogAspect = new WebLogAspect();
+        webLogAspect.setRequest(mitToolConfigurationProperties.getWeblog().isRequest());
+        webLogAspect.setResponse(mitToolConfigurationProperties.getWeblog().isResponse());
+        return webLogAspect;
+    }
+
+
 
 }

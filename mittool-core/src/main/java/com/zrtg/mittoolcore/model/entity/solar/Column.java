@@ -1,8 +1,6 @@
-package com.zrtg.mittoolcore.model.sobey.solar;
+package com.zrtg.mittoolcore.model.entity.solar;
 
 import lombok.Data;
-
-import java.util.List;
 
 
 @Data
