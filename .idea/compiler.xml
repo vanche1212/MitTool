@@ -7,21 +7,38 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mittool-core" />
-        <module name="mittool-spring-boot-starter" />
+        <module name="mittool-core-log" />
+        <module name="mittool-spring-boot-starter-log" />
         <module name="mittool-test" />
-        <module name="mittool-mpbg" />
-        <module name="mittool-spring-boot-autoconfigure" />
+        <module name="mittool-spring-boot-starter-bluecloud-api" />
+        <module name="mittool-core-bluecloud-api" />
+        <module name="mittool-spring-boot-starter-mpbg" />
+        <module name="mittool-spring-boot-starter-ldap" />
+        <module name="mittool-core-ldap" />
+        <module name="mittool-core-mpbg" />
+        <module name="mittool-common" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="demo" target="1.8" />
+      <module name="mittool-spring-boot-autoconfigure" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo" options="-parameters" />
+      <module name="mittool-common" options="-parameters" />
       <module name="mittool-core" options="-parameters" />
-      <module name="mittool-mpbg" options="-parameters" />
+      <module name="mittool-core-bluecloud-api" options="-parameters" />
+      <module name="mittool-core-ldap" options="-parameters" />
+      <module name="mittool-core-log" options="-parameters" />
+      <module name="mittool-core-mpbg" options="-parameters" />
       <module name="mittool-spring-boot-autoconfigure" options="-parameters" />
       <module name="mittool-spring-boot-starter" options="-parameters" />
+      <module name="mittool-spring-boot-starter-bluecloud-api" options="-parameters" />
+      <module name="mittool-spring-boot-starter-ldap" options="-parameters" />
+      <module name="mittool-spring-boot-starter-log" options="-parameters" />
+      <module name="mittool-spring-boot-starter-mpbg" options="-parameters" />
       <module name="mittool-test" options="-parameters" />
     </option>
   </component>

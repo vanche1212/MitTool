@@ -6,7 +6,20 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/mittool-test/pom.xml" />
+        <option value="$PROJECT_DIR$/mittool-common/pom.xml" />
+        <option value="$PROJECT_DIR$/mittool-core/mittool-core-log/pom.xml" />
+        <option value="$PROJECT_DIR$/mittool-core/mittool-core-request/pom.xml" />
+        <option value="$PROJECT_DIR$/mittool-core/mittool-core-ldap/pom.xml" />
+        <option value="$PROJECT_DIR$/mittool-spring-boot-starter/mittool-spring-boot-starter-ldap/pom.xml" />
+        <option value="$PROJECT_DIR$/mittool-spring-boot-starter/mittool-spring-boot-starter-log/pom.xml" />
+        <option value="$PROJECT_DIR$/mittool-spring-boot-starter/mittool-spring-boot-starter-mpbg/pom.xml" />
+        <option value="$PROJECT_DIR$/mittool-spring-boot-starter/mittool-spring-boot-starter-bluecloud-api/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/mittool-spring-boot-autoconfigure/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
